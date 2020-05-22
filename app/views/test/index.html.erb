@@ -1,0 +1,23 @@
+<p>aaa</p>
+
+<button onclick="test()">aaaaaa</button>
+
+<script>
+
+function test() {
+    var request = new XMLHttpRequest();
+    const appID = "1052617503048427154"
+
+    const req = "https://app.rakuten.co.jp/services/api/IchibaGenre/Search/20140222?applicationId=" + appID + "&genreId=0"
+ 
+    request.open('GET', req, true);
+    request.responseType = 'json';
+ 
+    request.onload = function () {
+      var data = this.response;
+      console.log(data);
+    };
+ 
+    request.send();
+}
+</script>
