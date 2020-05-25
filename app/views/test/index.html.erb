@@ -1,6 +1,8 @@
 <div id="app">
+  <header-c>
+    <header-buttom-c v-on:toggle="toggle = !toggle" v-bind:toggle="toggle"></header-buttom-c>
+  </header-c>
   <button onclick="test()">aaaaaa</button>
-  <test-component></test-component>
   <concierge-c>
     <p>はじめまして！これはテストです<br>いい感じにテキストが表示<br>できていますでしょうか？</p>
   </concierge-c>
