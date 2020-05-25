@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :test
+  resources :test
 
-  get "/test/banktest" => "test#banktest"
+  get "/banktest" => "test#banktest"
 end
