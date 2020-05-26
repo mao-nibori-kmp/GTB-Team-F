@@ -10,6 +10,7 @@ import HeaderBottom from '../components/header_bottom.vue'
 import MainPage from '../components/main_page.vue'
 import UserButton from '../components/user_button.vue'
 import UserSetting from '../components/user_setting.vue'
+import FormButton from '../components/form_button.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
@@ -23,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "header-buttom-c": HeaderBottom,
         "main-page-c": MainPage,
         "user-button-c": UserButton,
-        "user-setting-c": UserSetting
+        "user-setting-c": UserSetting,
+        "form-button-c": FormButton,
     },
     data: {
       toggle: true,

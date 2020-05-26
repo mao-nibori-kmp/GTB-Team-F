@@ -1,10 +1,31 @@
 <div id="app">
     <%= form_for(@user) do |f| %>
-        <div class="page">
-            <div>メールアドレス</div>
-            <div><%= f.text_field :mail %></div>
-            <div>パスワード</div>
-            <div><%= f.text_field :password_digest %></div>
+        <div class="logo_area">
+            <img src="/assets/レコンシェルジュロゴカラー.png" alt="" srcset="">
+        </div>
+        <div class="pages">
+            <div class="page">
+                <concierge-c height="95px" icon="/assets/レコ美_アイコン_全体説明.png">
+                    <p>レコンシェルジュは<br>溜まっていくお小遣いを<br>何に使えばいいか教えてくれるアプリです。</p>
+                </concierge-c>
+                <br>
+                <concierge-c height="54px" icon="/assets/レコ美_アイコン_全体説明.png">
+                    <p>まずは必要な情報を<br>入力してください！</p>
+                </concierge-c>
+                <div class="form_area" style="margin-top: 20px">
+                    <div class="box">
+                        <p>メールアドレス</p>
+                        <%= f.text_field :mail, "class" => "text", "placeholder" => "xxxxx@xxxxx.com" %>
+                    </div>
+                </div>
+                <div class="form_area" style="margin-top: 10px">
+                    <div class="box">
+                        <p>パスワード</p>
+                        <%= f.text_field :password_digest, "class" => "text", "placeholder" => "****************" %>
+                    </div>
+                </div>
+                <form-button-c width="120px" height="32px" style="margin-top: 25px">次へ</form-button-c>
+            </div>
         </div>
         
         <div><%= f.label :nickname %></div>
