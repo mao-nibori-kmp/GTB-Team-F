@@ -17,7 +17,6 @@
 <style lang="scss" scoped>
 .tmp {
     width: 100%;
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     .concierge {

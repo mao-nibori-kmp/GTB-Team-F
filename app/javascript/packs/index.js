@@ -7,6 +7,7 @@ import CheckButton from '../components/checkbutton.vue'
 import Header from '../components/header.vue'
 import HeaderTop from '../components/header_top.vue'
 import HeaderBottom from '../components/header_bottom.vue'
+import MainPage from '../components/main_page.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
@@ -17,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "checkbutton-c": CheckButton,
         "header-c": Header,
         "header-top-c": HeaderTop,
-        "header-buttom-c": HeaderBottom
+        "header-buttom-c": HeaderBottom,
+        "main-page-c": MainPage
     },
     data: {
-      toggle: true
+      toggle: true,
     }
   })
 })
