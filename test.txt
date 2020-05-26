@@ -6,4 +6,4 @@
 
 テす
 
-Jenkuns test
+Jenkuns testだよ
