@@ -3,20 +3,9 @@
    <header-top-C>
    <p>あいうえお</p>
    </header-top-C>
-    <header-buttom-c v-on:toggle="toggle = !toggle" v-bind:toggle="toggle"></header-buttom-c>
+   <header-buttom-c v-on:toggle_zero="toggle = true" v-on:toggle_one="toggle = false" v-bind:toggle="toggle"></header-buttom-c>
   </header-c>
-  <button onclick="test()">aaaaaa</button>
-  <concierge-c>
-    <p>はじめまして！これはテストです<br>いい感じにテキストが表示<br>できていますでしょうか？</p>
-  </concierge-c>
-  <concierge-c>
-    <p>あ、できてるくさいですね！<br>ならオッケーです！</p>
-  </concierge-c>
-  <concierge-c>
-    <p>お金ください！！</p>
-    <h2>50000000円!!!</h2>
-  </concierge-c>
-  <checkbutton-c></checkbutton-c>
+  <main-page-c :toggle="toggle"></main-page-c>
 </div>
 
 
