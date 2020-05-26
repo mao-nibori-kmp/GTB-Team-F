@@ -1,17 +1,11 @@
 <div id="app">
-  <button onclick="test()">aaaaaa</button>
-  <test-component></test-component>
-  <concierge-c>
-    <p>はじめまして！これはテストです<br>いい感じにテキストが表示<br>できていますでしょうか？</p>
-  </concierge-c>
-  <concierge-c>
-    <p>あ、できてるくさいですね！<br>ならオッケーです！</p>
-  </concierge-c>
-  <concierge-c>
-    <p>お金ください！！</p>
-    <h2>50000000円!!!</h2>
-  </concierge-c>
-  <checkbutton-c></checkbutton-c>
+  <header-c>
+   <header-top-C>
+   <p>あいうえお</p>
+   </header-top-C>
+   <header-buttom-c v-on:toggle_zero="toggle = true" v-on:toggle_one="toggle = false" v-bind:toggle="toggle"></header-buttom-c>
+  </header-c>
+  <main-page-c :toggle="toggle"></main-page-c>
 </div>
 
 
