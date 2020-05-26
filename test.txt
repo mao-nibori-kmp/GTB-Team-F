@@ -7,3 +7,7 @@
 テす
 
 Jenkuns testだよ pro2
+11492d96fa890501c0e32c92e543ae6787
+http://takitaniyu:11492d96fa890501c0e32c92e543ae6787@160.251.12.107/job/Github_deploy/buildWithParameters?token=github
+
+http://takitaniyu:github@160.251.12.107/job/Github_deploy/buildWithParameters?token=11492d96fa890501c0e32c92e543ae6787
