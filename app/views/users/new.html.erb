@@ -1,7 +1,29 @@
 <div id="app">
     <%= form_for(@user) do |f| %>
-    <div><%= f.label :mail %></div>
-    <div><%= f.text_field :mail %></div>
-    <div><%= f.submit %></div>
+        <div class="page">
+            <div>メールアドレス</div>
+            <div><%= f.text_field :mail %></div>
+            <div>パスワード</div>
+            <div><%= f.text_field :password_digest %></div>
+        </div>
+        
+        <div><%= f.label :nickname %></div>
+        <div><%= f.text_field :nickname, "v-model" => "genreText" %></div>
+        <div><%= f.label :age %></div>
+        <div><%= f.text_field :age, "v-model" => "user.age" %></div>
+        <div><%= f.label :sex %></div>
+        <div><%= f.text_field :sex, "v-model" => "user.sex" %></div>
+        <div><%= f.label :deposit %></div>
+        <div><%= f.text_field :deposit %></div>
+        <div><%= f.submit %></div>
     <% end %>
+    <user-button-c v-on:set="user.age = '10'" v-bind:userdata="user.age" data="10">10代</user-button-c>
+    <user-button-c v-on:set="user.age = '20'" v-bind:userdata="user.age" data="20">20代</user-button-c>
+    <user-button-c v-on:set="user.age = '30'" v-bind:userdata="user.age" data="30">30代</user-button-c>
+    <user-button-c v-on:set="user.age = '40'" v-bind:userdata="user.age" data="40">40代</user-button-c>
+    <user-button-c v-on:set="user.age = '50'" v-bind:userdata="user.age" data="50">50代以上</user-button-c>
+
+    <user-button-c v-on:set="user.sex = '0'" v-bind:userdata="user.sex" data="0">男性</user-button-c>
+    <user-button-c v-on:set="user.sex = '1'" v-bind:userdata="user.sex" data="1">女性</user-button-c>
 </div>
+
