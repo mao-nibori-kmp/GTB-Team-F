@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
     def index
-        
+        @token = "1094716811490195121"
+        @max_page = 10
+        @prank = view_context.return_rakuten_personal_ranking(@token, @max_page)
+        @prank = view_context.return_final_ranking(@prank)
+        @grank = view_context.return_rakuten_search_ranking(@token)
+        @recommend = view_context.propose_products(@prank, @grank)
+
     end
+
+    #def rakutentest
+    #    @token = "1094716811490195121"
+    #    @balance = view_context.token_to_balance(@token)
+    #end
 
     def new
         @user = User.new
