@@ -58,9 +58,9 @@ module ApplicationHelper
     end
 
 
-    def token_to_balance(x_access_token)
-        return accountId_to_balance(token_to_accountId(x_access_token))
-    end
+    # def token_to_balance(x_access_token)
+    #     return accountId_to_balance(token_to_accountId(x_access_token))
+    # end
 
 
     # ＝＝＝＝＝＝＝＝＝＝＝＝＝＝入出金参照＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -127,8 +127,41 @@ module ApplicationHelper
     end
 
 
-    def token_to_transactions(x_access_token,dateFrom)
-        return accountId_to_transactions(token_to_accountId(x_access_token),dateFrom)
+    def get_income_this_month(accountId)
+        dateFrom = Date.today.beginning_of_month.to_s
+    
+        url = URI("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/transactions?accountId=" + accountId + "&dateFrom=" + dateFrom )
+    
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    
+        request = Net::HTTP::Get.new(url)
+        request["x-access-token"] = $x_access_token
+        request["accept"] = 'application/json;charset=UTF-8'
+    
+        response = http.request(request)
+    
+        hash = JSON.parse(response.read_body)
+        transactions_count = hash["count"].to_i
+    
+        income = 0
+    
+        for num in 0..transactions_count-1 do
+            
+    
+            transaction = hash["transactions"][num]
+            transactionType = transaction["transactionType"]
+            if transactionType == "1"
+                income += transaction["amount"].to_i
+            else
+                income -= transaction["amount"].to_i
+            end
+    
+        end
+    
+        return income
+    
     end
 
 
