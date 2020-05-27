@@ -30,6 +30,10 @@ module ApplicationHelper
     end
 
 
+
+    # ＝＝＝＝＝＝＝＝＝＝＝＝＝＝残高参照＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+
     def accountId_to_balance(accountId)
 
         # 残高取得
@@ -59,20 +63,14 @@ module ApplicationHelper
     end
 
 
-    def accountId_to_transactions_this_month(accountId)
-
-        d = Date.today
-        today_month = d.month.to_s
-
-        # 1 月から９月の時は先頭に0を付ける
-        if today_month.length == 1
-            today_month = "0".concat(today_month)
-
-        end
-        today_year = d.year.to_s
+    # ＝＝＝＝＝＝＝＝＝＝＝＝＝＝入出金参照＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 
-        url = URI("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/transactions?accountId=" + accountId + "&dateFrom=" +today_year + "-" + today_month + "-01")
+    # dateFromはString型
+
+    def accountId_to_transactions(accountId,dateFrom)
+
+        url = URI("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/transactions?accountId=" + accountId + "&dateFrom=" + dateFrom)
 
         http = Net::HTTP.new(url.host, url.port)
         http.use_ssl = true
@@ -125,11 +123,12 @@ module ApplicationHelper
 
         end
 
-        return transactions
+        return transactions.sort_by! { |a| a[:valueDate] }.reverse
     end
 
-    def token_to_transactions(x_access_token)
-        return accountId_to_transactions_this_month(token_to_accountId(x_access_token))
+
+    def token_to_transactions(x_access_token,dateFrom)
+        return accountId_to_transactions(token_to_accountId(x_access_token),dateFrom)
     end
 
 
