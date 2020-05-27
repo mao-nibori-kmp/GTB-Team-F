@@ -1,0 +1,13 @@
+<div id="app">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+        <%= f.label :mail %>
+        <%= f.email_field :mail, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+</div>
+
