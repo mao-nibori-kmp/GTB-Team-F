@@ -1,1 +1,4 @@
 <h1>残高　<%= @balance %> 円だよ～</h1>
+<% @transactions.each do |transaction| %>
+    <li><%= transaction %></li>
+  <% end %>
