@@ -3,9 +3,6 @@ require 'net/http'
 require 'json'
 require 'date'
 
-module ApplicationHelper
-
-
     def token_to_accountId(x_access_token)
         # トークンから口座IDを取得
         $x_access_token = x_access_token
@@ -57,6 +54,7 @@ module ApplicationHelper
     def token_to_balance(x_access_token)
         return accountId_to_balance(token_to_accountId(x_access_token))
     end
+
 
 
     def accountId_to_transactions_this_month(accountId)
@@ -131,4 +129,5 @@ module ApplicationHelper
 
 
 
-end
+print token_to_transactions("ZDk2NzJiMDVjM2JiNjVjMGI1ZWZmZmVj")
+puts 
