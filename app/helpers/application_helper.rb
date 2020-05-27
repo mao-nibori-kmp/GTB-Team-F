@@ -92,22 +92,35 @@ module ApplicationHelper
             
 
             transaction = hash["transactions"][num]
-            transactionType = transaction["transactionType"]
-
+    
 
 
             # 日付を追加
             valueDate = transaction["valueDate"]
             valueDate = Date.parse(valueDate)
+            month = valueDate.month.to_s
+            day = valueDate.day.to_s
 
+            valueDate = month + "/" + day
+
+            # valueDate = valueDate.split("-")
+            # valueDate = valueDate[1] + "/" + valueDate[2]
+
+            # 1月～9月は先頭の0を消す
+            if valueDate[0] == "0"
+                valueDate = valueDate.delete_at(0)
+            end
+
+            
 
             # 入金か出勤判定
+            transactionType = transaction["transactionType"]
             if transactionType == "1"
                 # 入金
-                income = true
+                income = "入金"
             elsif transactionType == "2"
                 # 出金
-                income = false
+                income = "出金"
             else
                 income =  "エラーでござる"
             end
