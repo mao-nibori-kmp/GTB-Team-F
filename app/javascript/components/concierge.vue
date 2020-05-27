@@ -4,7 +4,7 @@
             <div class="con_img">
                 <img v-bind:src="icon" alt="">
             </div>
-            <div class="con_text" v-bind:style="{height: height}">
+            <div class="con_text" v-bind:style="{height: height}"  v-bind:class="[type === 'center' ? 'center' : '']">
                 <div class="req_html">
                     <slot></slot>
                 </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['height', 'icon']
+  props: ['height', 'icon', 'type']
 }
 </script>
 
@@ -50,6 +50,9 @@ export default {
             display: flex;
             align-items: center;
             font-size: 1.4rem;
+        }
+        .center {
+            justify-content: center;
         }
         .triangle {
             border-top: 5px solid transparent;

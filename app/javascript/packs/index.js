@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "user-button-c": UserButton,
         "user-setting-c": UserSetting,
         "form-button-c": FormButton,
-        "genre-button-c": GenreButton
+        "genre-button-c": GenreButton,
     },
     data: {
       toggle: true,
