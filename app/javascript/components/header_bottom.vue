@@ -1,5 +1,5 @@
 <template>
-    <div class="tmp">
+    <div class="toggles">
         <div class="toggle_area">
             <div class="toggle_button" v-on:click="$emit('toggle_zero')" v-bind:class="[toggle === true ? 'toggled_zero' : '']">
                 <div class="toggle_text">入出金</div>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tmp {
+.toggles {
     width: 100%;
     .toggle_area {
         width: 100%;
