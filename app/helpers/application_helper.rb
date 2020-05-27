@@ -71,7 +71,7 @@ module ApplicationHelper
         end
         today_year = d.year.to_s
 
-        
+
         url = URI("https://api.sunabar.gmo-aozora.com/personal/v1/accounts/transactions?accountId=" + accountId + "&dateFrom=" +today_year + "-" + today_month + "-01")
 
         http = Net::HTTP.new(url.host, url.port)
@@ -92,32 +92,36 @@ module ApplicationHelper
 
         for num in 0..transactions_count-1 do
             
-            tmp_transaction = []
 
             transaction = hash["transactions"][num]
             transactionType = transaction["transactionType"]
 
 
+
+            # 日付を追加
+            valueDate = transaction["valueDate"]
+            valueDate = Date.parse(valueDate)
+
+
             # 入金か出勤判定
             if transactionType == "1"
                 # 入金
-                tmp_transaction.push(true)
+                income = true
             elsif transactionType == "2"
                 # 出金
-                tmp_transaction.push(false)
+                income = false
             else
-                tmp_transaction.push("エラーでござる")
+                income =  "エラーでござる"
             end
 
             # 金額を追加
             amount = transaction["amount"].to_i
-            tmp_transaction.push(amount)
 
-            # 日付を追加
-            valueDate = transaction["valueDate"]
-            tmp_transaction.push(valueDate)
+            
 
-            transactions.push(tmp_transaction)
+            transaction_hash = {valueDate: valueDate  , transactionType: income  , amount: amount}
+
+            transactions.push(transaction_hash)
 
         end
 
