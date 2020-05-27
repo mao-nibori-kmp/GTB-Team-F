@@ -44,7 +44,7 @@ export default {
         .con_text {
             margin-left: 20px;
             padding: 0 10px 0 10px;
-            width: calc(100% - 90px);
+            width: calc(100% - 70px);
             min-height: 45px;
             background-color: #fff;
             display: flex;

@@ -31,6 +31,6 @@ protect_from_forgery
 
     private
     def users_params
-        params.require(:user).permit(:mail, :nickname, :sex, :age, :deposit, :password_digest)
+        params.require(:user).permit(:mail, :nickname, :sex, :age, :deposit, :password_digest, :genre, :token)
     end
 end
