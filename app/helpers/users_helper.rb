@@ -27,14 +27,14 @@ module UsersHelper
         return hash["children"][genreNum]["child"]["genreName"], hash["children"][genreNum]["child"]["genreId"]
     end
 
-    def return_rakuten_personal_ranking(access_token, max_page)
+    def return_rakuten_personal_ranking(access_token, max_page, user, usable_money)
 
         rank_list = []
 
         # このユーザ情報は仮置き
-        usableMoney = 10000
-        age=20
-        sex=0
+        usableMoney = usable_money
+        age=user.age
+        sex=user.sex
 
         # ユーザの個人情報を基に楽天ランキングデータを取得
         # ageは年代20~50以上の五段階、sexは0が男性、1が女性
@@ -69,7 +69,7 @@ module UsersHelper
         return rank_list
     end
 
-    def return_final_ranking(prank)
+    def return_final_ranking(prank, user)
         # 楽天が提供している商品ジャンル全てをcsvファイルから読み込む
         arr = CSV.read("app/helpers/rakuten_genre.csv")
 
@@ -77,12 +77,12 @@ module UsersHelper
         hash = Hash[*arr.flatten]
 
         # このgenre_infoは仮置き
-        genre_info = [{"id"=>"200162", "Name"=>"hogehoge", "flag"=>"1"}, {"id"=>"564500", "Name"=>"hiyopiyo", "flag"=>"1"}]
+        genre_info = JSON.parse(user.genre)
         
         # 判定を高速化するためにユーザが選択したジャンルの情報だけ格納した連想配列を作る
         fav_genre = {}
         genre_info.each do |gi|
-            if gi["flag"] == "1"
+            if gi["flag"] == true
                 fav_genre[gi["id"]] = gi["Name"]
             end
         end
@@ -95,19 +95,20 @@ module UsersHelper
         return pgrank
     end
 
-    def return_rakuten_search_ranking(access_token)
+    def return_rakuten_search_ranking(access_token, user, usable_money)
 
         rank_list = []
 
         # このgenre_infoは仮置き
-        genre_info = [{"id"=>"200162", "Name"=>"hogehoge", "flag"=>"1"}, {"id"=>"564500", "Name"=>"hiyopiyo", "flag"=>"1"}]
-        usableMoney = 10000
+        #genre_info = [{"id"=>"200162", "Name"=>"hogehoge", "flag"=>"1"}, {"id"=>"564500", "Name"=>"hiyopiyo", "flag"=>"1"}]
+        genre_info = JSON.parse(user.genre)
+        usableMoney = usable_money
         ratio = 1.3 # この比率はusableMoneyに対して前後いくらまでの商品を検索するかを表す(大きければ検索幅も広がる)
 
         genre_info.each do |gi|
-            if gi["flag"] == "1"
+            if gi["flag"] == true
                 genre_id = gi["id"]
-                hash = get_json_response_uri("https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?applicationId="+access_token+"&minPrice="+usableMoney.div(ratio).to_s+"&maxPrice="+(usableMoney*ratio).floor.to_s+"&genreId="+genre_id+"&sort=standard")
+                hash = get_json_response_uri("https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?applicationId="+access_token+"&minPrice="+usableMoney.div(ratio).to_s+"&maxPrice="+(usableMoney).floor.to_s+"&genreId="+genre_id.to_s+"&sort=standard")
 
                 # 検索したページに何も結果が含まれていないならばmax_pageまでいかずそのまま打ち切る
                 if hash["Items"].nil?

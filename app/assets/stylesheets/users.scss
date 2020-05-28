@@ -248,8 +248,14 @@ input[type="button"] {
                     height: 135px;
                     overflow: hidden;
                     position: relative;
-                    img {
+                    .img_area {
                         height: 100px;
+                        width: 100px;
+                        display: flex;
+                        justify-content: center;
+                        img {
+                            height: 100px;
+                        }
                     }
                     p {
                         width: 100%;
@@ -262,7 +268,6 @@ input[type="button"] {
                         left: 0;
                         width: 100px;
                         height: 100px;
-                        background-color: rgba(0, 0, 0, 0.39);
                     }
                 }
             }

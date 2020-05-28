@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
 protect_from_forgery
     def index
-        @token = "1094716811490195121"
-        @max_page = 10
-        @prank = view_context.return_rakuten_personal_ranking(@token, @max_page)
-        @prank = view_context.return_final_ranking(@prank)
-        @grank = view_context.return_rakuten_search_ranking(@token)
-        @recommend = view_context.propose_products(@prank, @grank)
-
         #@user = User.find_by(id: session[:user_id])
         # ここをデータベースからトークンを入手するように変更する　@user = Database.find_by(id: params[:id]) / 
         token = "ZDk2NzJiMDVjM2JiNjVjMGI1ZWZmZmVj"
@@ -26,6 +19,14 @@ protect_from_forgery
 
         # 浮いたお金
         @money_left_over = view_context.get_income_this_month(accountId) -  @deposit
+
+
+        @token = "1094716811490195121"
+        @max_page = 10
+        @prank = view_context.return_rakuten_personal_ranking(@token, @max_page, @current_user, @money_left_over)
+        @prank = view_context.return_final_ranking(@prank, @current_user)
+        @grank = view_context.return_rakuten_search_ranking(@token, @current_user, @money_left_over)
+        @recommend = view_context.propose_products(@prank, @grank)
     end
 
     #def rakutentest
