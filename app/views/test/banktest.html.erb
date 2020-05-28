@@ -1,1 +1,11 @@
 <h1>残高　<%= @balance %> 円だよ～</h1>
+<% @transactions.each do |transaction| %>
+    <li><%= transaction %></li>
+  <% end %>
+
+<br>
+<%= @dateFrom %><br>
+<%= @income_this_month %><br>
+<%= @current_user %><br>
+<%= @deposit %><br>
+<%= @money_left_over %><br>
