@@ -11,33 +11,35 @@
                     </concierge-c>
                     <br>
                     <concierge-c height="54px" icon="/assets/レコ美_アイコン_全体説明.png">
-                        <p>まずは必要な情報を<br>入力してください！</p>
+                        <p v-if="check.mail">まずは必要な情報を<br>入力してください！</p>
+                        <p v-if="!check.mail" style="color:red" v-html="mail_text"></p>
                     </concierge-c>
                     <div class="form_area" style="margin-top: 20px">
                         <div class="box">
                             <p>メールアドレス</p>
-                            <%= f.text_field :mail, "class" => "text", "placeholder" => "xxxxx@xxxxx.com" %>
+                            <%= f.text_field :mail, "class" => "text", "placeholder" => "xxxxx@xxxxx.com", "v-model" => "user.mail" %>
                         </div>
                     </div>
                     <div class="form_area" style="margin-top: 10px">
                         <div class="box">
                             <p>パスワード</p>
-                            <%= f.password_field :password, "class" => "text", "placeholder" => "****************" %>
+                            <%= f.password_field :password, "class" => "text", "placeholder" => "****************", "v-model" => "user.pass" %>
                         </div>
                     </div>
                     <div class="form_buttons">
                         <a data-method="post" href="/welcometest" class="back_page">戻る</a> 
-                        <form-button-c v-on:slide="slide = '-100vw'">次へ</form-button-c>
+                        <form-button-c v-on:slide="validateSlide('mail')">次へ</form-button-c>
                     </div>
                 </div>
                 <div class="page">
                     <concierge-c height="90px" icon="/assets/レコ美_アイコン_全体説明.png">
-                        <p>次に、プロフィールの入力を<br>お願いします。</p>
+                        <p v-if="check.name">次に、プロフィールの入力を<br>お願いします。</p>
+                        <p v-if="!check.name" style="color:red">ニックネームを入力してください！</p>
                     </concierge-c>
                     <div class="form_area" style="margin-top: 20px">
                         <div class="box">
                             <p>ニックネーム</p>
-                            <%= f.text_field :nickname, "class" => "text", "placeholder" => "お金に困り太郎" %>
+                            <%= f.text_field :nickname, "class" => "text", "placeholder" => "お金に困り太郎", "v-model" => "user.name" %>
                         </div>
                     </div>
                     <div class="form_area" style="margin-top: 20px">
@@ -67,12 +69,13 @@
                     </div>
                     <div class="form_buttons">
                         <form-button-c v-on:slide="slide = '0'">戻る</form-button-c>
-                        <form-button-c v-on:slide="slide = '-200vw'">次へ</form-button-c>
+                        <form-button-c v-on:slide="validateSlide('name')">次へ</form-button-c>
                     </div>
                 </div>
-                <div class="page">
+                <div class="page" id="scroll">
                     <concierge-c height="90px" icon="/assets/レコ美_アイコン_全体説明.png">
-                        <p>項目の中から興味のあるジャンルを<br>選んでください（最低３ジャンル）</p>
+                        <p v-if="check.genre">項目の中から興味のあるジャンルを<br>選んでください（最低３ジャンル）</p>
+                        <p v-if="!check.genre" style="color:red">３つ以上選んでください！</p>
                     </concierge-c>
                     <div class="form_area">
                         <div class="box">
@@ -84,42 +87,44 @@
                     </div>
                     <div class="form_buttons" style="margin-bottom: 100px">
                         <form-button-c v-on:slide="slide = '-100vw'">戻る</form-button-c>
-                        <form-button-c v-on:slide="slide = '-300vw'">次へ</form-button-c>
+                        <form-button-c v-on:slide="validateSlide('genre')">次へ</form-button-c>
                     </div>
                 </div>
                 <div class="page">
                     <concierge-c height="90px" icon="/assets/レコ美_アイコン_全体説明.png">
-                        <p>GMOあおぞらネット銀行との連携を<br>行います。<br>トークンの取得と入力をお願いします。</p>
+                        <p v-if="check.token">GMOあおぞらネット銀行との連携を<br>行います。<br>トークンの取得と入力をお願いします。</p>
+                        <p v-if="!check.token" style="color:red">アクセストークンを<br>入力してください！</p>
                     </concierge-c>
                     <div class="form_area" style="margin-top: 20px">
                         <div class="box">
                             <p class="token_text"><a href="https://gmo-aozora.com/sunabar/pdf/guide-service.pdf?_ga=2.65608430.1951887090.1590384940-2084011802.1590028280&_gac=1.242352694.1590109157.EAIaIQobChMIlYrqmaLG6QIVTNiWCh1ZXgpoEAAYASAAEgLo_vD_BwE">アクセストークンについて詳しくはこちら</a></p>
                             <div class="token_button"><a href="">アクセストークンを取得する</a></div>
                             <p>アクセストークン</p>
-                            <%= f.text_field :token, "class" => "text", "placeholder" => "" %>
+                            <%= f.text_field :token, "class" => "text", "placeholder" => "", "v-model" => "user.token" %>
                         </div>
                     </div>
                     <div class="form_buttons">
                         <form-button-c v-on:slide="slide = '-200vw'">戻る</form-button-c>
-                        <form-button-c v-on:slide="slide = '-400vw'">次へ</form-button-c>
+                        <form-button-c v-on:slide="validateSlide('token')">次へ</form-button-c>
                     </div>
                 </div>
                 <div class="page">
                     <concierge-c height="90px" icon="/assets/レコ美_アイコン_全体説明.png">
-                        <p>最後に、毎月の貯金予定額を<br>教えて下さい。</p>
+                        <p v-if="check.deposit">最後に、毎月の貯金予定額を<br>教えて下さい。</p>
+                        <p v-if="!check.deposit" style="color:red">{{ depo_text }}</p>
                     </concierge-c>
                     <div class="form_area" style="margin-top: 20px">
                         <div class="box">
                             <p>貯金予定額</p>
                             <div class="deposit">
-                                <%= f.text_field :deposit, "class" => "text", "placeholder" => "50000" %>
+                                <%= f.text_field :deposit, "class" => "text", "placeholder" => "50000", "v-model" => "user.deposit" %>
                                 <div class="yen">円</div>
                             </div>
                         </div>
                     </div>
                     <div class="form_buttons">
                         <form-button-c v-on:slide="slide = '-300vw'">戻る</form-button-c>
-                        <form-button-c v-on:slide="slide = '-500vw'">次へ</form-button-c>
+                        <form-button-c v-on:slide="validateSlide('deposit')">次へ</form-button-c>
                     </div>
                 </div>
                 <div class="page">
