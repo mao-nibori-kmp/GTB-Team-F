@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
           {id:100000, name:"百貨店・総合通販・ギフト", flag:false},
         ]
       },
-      slide: "0"
+      slide: "0",
+      setting: false
     },
     computed: {
       genreText: function () {

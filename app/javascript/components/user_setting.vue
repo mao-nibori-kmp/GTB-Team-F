@@ -1,31 +1,30 @@
 <template>
     <div class="tmp">
-     <div class="header">
-              <div class="navbar">
-                    <div class="setting">
-                          <img src="/assets/設定矢印2.png" alt="">
-                    </div>      
-                     <div class="logo">
-                           <ul>
-                                <li>設定</li>  
-                           </ul>       
-                    </div>          
-              </div> 
+        <div class="header">
+            <div class="navbar">
+                <div class="setting">
+                    <img src="/assets/設定矢印2.png" alt="" v-on:click="$emit('toggle')">
+                </div>      
+                <div class="logo">
+                    <ul>
+                        <li>設定</li>  
+                    </ul>       
+                </div>          
+            </div> 
         </div> 
-   <div class="hero">
-        <div class="listbar">
-            <ul>
-                <li><a href="https://www.youtube.com/" class="listbar">プロフィール設定</a></li>
-                <li><a href="https://www.youtube.com/" class="listbar">興味のあるジャンル設定</a></li>
-                <li><a href="https://www.youtube.com/" class="listbar">銀行設定</a></li>
-                <li><a href="https://www.youtube.com/" class="listbar">毎月の貯金額設定</a></li>
-                <li><a href="https://www.youtube.com/" class="listbar">ログイン設定</a></li>
-                <li><a href="https://www.youtube.com/" class="listbar">ログアウト</a></li>
-            </ul>
-        </div>  
-   </div>
-</div>
-  
+        <div class="hero">
+            <div class="listbar">
+                <ul>
+                    <li><a href="https://www.youtube.com/" class="listbar">プロフィール設定</a></li>
+                    <li><a href="https://www.youtube.com/" class="listbar">興味のあるジャンル設定</a></li>
+                    <li><a href="https://www.youtube.com/" class="listbar">銀行設定</a></li>
+                    <li><a href="https://www.youtube.com/" class="listbar">毎月の貯金額設定</a></li>
+                    <li><a href="https://www.youtube.com/" class="listbar">ログイン設定</a></li>
+                    <li><a data-method="delete" href="/logout" class="listbar">ログアウト</a></li>
+                </ul>
+            </div>  
+        </div>
+    </div>
 </template>
 
 <script>
@@ -43,6 +42,7 @@ export default {
     top: 0;
     right: 0;
     background-color: #fff;
+    box-shadow: -8px 0px 8px -1px rgba(0,0,0,0.31);
 }
 
  .header{

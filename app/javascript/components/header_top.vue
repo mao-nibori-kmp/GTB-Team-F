@@ -5,7 +5,7 @@
                 <img src="/assets/レコンシェルジュロゴ白.png" alt="">
             </div>
             <div class="setting">
-                <img src="/assets/歯車.gif" alt="">
+                <img src="/assets/歯車.gif" alt="" v-on:click="$emit('toggle')">
             </div>
         </div>
     </div> 
