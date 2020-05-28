@@ -1,31 +1,35 @@
-<div id="app">
-  <header-c>
-   <header-top-C>
-   <p>あいうえお</p>
-   </header-top-C>
-   <header-buttom-c v-on:toggle_zero="toggle = true" v-on:toggle_one="toggle = false" v-bind:toggle="toggle"></header-buttom-c>
-  </header-c>
-  <main-page-c :toggle="toggle"></main-page-c>
-</div>
-
-
-
-<script>
-
-function test() {
-    var request = new XMLHttpRequest();
-    const appID = "1052617503048427154"
-
-    const req = "https://app.rakuten.co.jp/services/api/IchibaGenre/Search/20140222?applicationId=" + appID + "&genreId=0"
- 
-    request.open('GET', req, true);
-    request.responseType = 'json';
- 
-    request.onload = function () {
-      var data = this.response;
-      console.log(data);
-    };
- 
-    request.send();
-}
-</script>
+<!DOCTYPE html>
+<html>
+    <head>
+    <title></title>
+    </head>
+ <body>
+   <div class="introduce">
+            <div class="title">
+                <img src="/assets/レコンシェルジュロゴカラー.png" alt="">
+            </div>       
+            <div class="content">
+                <div class="register">
+                    <div class="new">
+                      <a href="https://www.youtube.com/" class="new"> 新規会員登録</a>
+                    </div>
+                </div>
+                <div class="logon">
+                       <div class="log">
+                       <a href="https://www.youtube.com/" class="log">ログイン</a> 
+                        </div>
+                </div>
+                <div class="forget">
+                    <a href="https://www.youtube.com/" class="forget">ログイン情報を忘れた場合</a>
+                </div>
+                <div class="coment">
+                   <p>レコンシェルジュへようこそ！<br>
+                    レコ美が案内します。</p>
+                    </div>
+                <div class="recomi">
+                    <img src="/assets/レコ美脚まで.png" alt="">
+                </div>  
+            </div>
+    </div>        
+</body>
+</html>

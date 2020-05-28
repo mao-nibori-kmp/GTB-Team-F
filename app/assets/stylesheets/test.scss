@@ -1,3 +1,124 @@
 // Place all the styles related to the Test controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html,body{
+    overflow: hidden;
+}
+.introduce{
+   width: 100%;
+   height: 100%;
+  background-color: #F5F5F6;
+}
+.title{
+    padding-top: 50px;
+    justify-content:center;
+    display:flex;
+    align-items: center;
+
+    img{
+        width:252px;
+        height:39px;
+    }    
+}
+.content{
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    text-align :center;
+}
+.register{
+    width:315px;
+    height:32px;
+    background-color: #666666;
+    justify-content: center;
+    display:flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+
+}
+.new{
+    font-size: 14px;
+    align-self: center;
+    color:#ffffff;
+    a{
+        width:315px;
+        height:32px;
+        display: block;
+        text-decoration: none;
+        padding-top: 8px;
+    }
+
+}
+.logon{
+   border-top-left-radius: 6px;
+   border-top-right-radius: 6px;
+   border-bottom-right-radius: 6px;
+   border-bottom-left-radius: 6px;
+    width:315px;
+    height:32px;
+    background-color:#3C8BAA;
+    justify-content: center;
+    display:flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.log{
+    font-size: 14px;
+    color:#ffffff;
+    justify-content:center;
+    text-align: center;
+    a{
+    width:315px;
+    height:32px;
+    display: block;
+    text-decoration: none;
+    padding-top: 6px;
+    }
+}
+.forget{
+    margin-top: 15px;
+    a{
+        text-decoration: none;
+        color:#3C8BAA;
+    }
+}
+.coment{
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: inline-block;
+    padding: 7px 10px;
+    width: 315px;
+    color: #666666;
+    font-size: 16px;
+    background: #ffffff;
+    }
+.coment:before {
+    content:"";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 15px solid #ffffff;
+  }
+  .coment p {
+    margin: 0;
+    padding: 0;
+  }
+  .recomi{
+      margin-top: 20px;
+    img{
+          height:279px;
+          overflow: hidden;
+      }
+  }
