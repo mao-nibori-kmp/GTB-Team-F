@@ -273,17 +273,22 @@ input[type="button"] {
             }
         }
     }
+
     
-    .slide-left-enter-active, .slide-left-leave-active {
+
+    
+   
+}
+
+.slide-left-enter-active, .slide-left-leave-active {
     transition: transform .2s;
-    }
-    .slide-left-enter, .slide-left-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        transform: translateY(0px) translateX(-100%);
-    }
-    .slide-right-enter-active, .slide-right-leave-active {
+}
+.slide-left-enter, .slide-left-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateY(0px) translateX(-100%);
+}
+.slide-right-enter-active, .slide-right-leave-active {
     transition: transform .2s;
-    }
-    .slide-right-enter, .slide-right-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        transform: translateY(0px) translateX(100%);
-    }
+}
+.slide-right-enter, .slide-right-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateY(0px) translateX(100%);
 }

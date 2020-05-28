@@ -1,60 +1,63 @@
 <div id="app">
-  <header-c>
-   <header-top-C>
-   <p>あいうえお</p>
-   </header-top-C>
-   <header-buttom-c v-on:toggle_zero="toggle = true" v-on:toggle_one="toggle = false" v-bind:toggle="toggle"></header-buttom-c>
-  </header-c>
-  <div class="home">
-    <transition name="slide-left">
-        <div class="toggle_area money_area" v-if="toggle">
-            <div class="navigate">
-                <concierge-c height="90px" icon="/assets/レコ美_アイコン_入出金.png" type="center">
-                    <p>只今の銀行残高は<br><span class="balance"><%= @income_this_month %>円</span>です！</p>
-                </concierge-c>
-            </div>
-            <div class="border blue"></div>
-            <div class="main">
-                <div class="log_title">過去３ヶ月の履歴</div>
-                <template v-for="hash in <%= @transactions %>">
-                    <div class="log" v-bind:key="hash.amount">
-                        <div class="texts">
-                            <div class="date text">{{ hash.valueDate }}</div>
-                            <div class="t-type text" v-bind:class="[hash.transactionType === '出金' ? 'red' : '']">{{ hash.transactionType}}</div>
-                            <div class="amount text">
-                                <div class="num">{{ hash.amount }}</div>
-                                <div class="yen">円</div>
+    <header-c>
+        <header-top-C v-on:toggle="setting = !setting">
+            <p>あいうえお</p>
+        </header-top-C>
+        <header-buttom-c v-on:toggle_zero="toggle = true" v-on:toggle_one="toggle = false" v-bind:toggle="toggle"></header-buttom-c>
+    </header-c>
+    <div class="home">
+        <transition name="slide-left">
+            <div class="toggle_area money_area" v-if="toggle">
+                <div class="navigate">
+                    <concierge-c height="90px" icon="/assets/レコ美_アイコン_入出金.png" type="center">
+                        <p>只今の銀行残高は<br><span class="balance"><%= @income_this_month %>円</span>です！</p>
+                    </concierge-c>
+                </div>
+                <div class="border blue"></div>
+                <div class="main">
+                    <div class="log_title">過去３ヶ月の履歴</div>
+                    <template v-for="hash in <%= @transactions %>">
+                        <div class="log" v-bind:key="hash.amount">
+                            <div class="texts">
+                                <div class="date text">{{ hash.valueDate }}</div>
+                                <div class="t-type text" v-bind:class="[hash.transactionType === '出金' ? 'red' : '']">{{ hash.transactionType}}</div>
+                                <div class="amount text">
+                                    <div class="num">{{ hash.amount }}</div>
+                                    <div class="yen">円</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </transition>
-    <transition name="slide-right">
-        <div class="toggle_area product_area" v-if="!toggle">
-            <div class="navigate">
-                <concierge-c height="90px" icon="/assets/レコ美_アイコン_おすすめ商品.png" type="center">
-                    <p>只今のお小遣いは<br><span class="deposit"><%= @money_left_over %>円</span>です！<br>おすすめの商品をご案内します。</p>
-                </concierge-c>
-            </div>
-            <div class="border yellow"></div>
-            <div class="main">
-                <div class="products">
-                    <% @recommend.each do |product|%>
-                        <div class="product">
-                            <div class="img_area">
-                                <img src="<%= product["imageUrl"] %>" alt="" srcset="">
-                            </div>
-                            <p><%= product["itemPrice"] %>円</p>
-                            <a href="<%= product["itemUrl"] %>" target="_blank"></a>
-                        </div>
-                    <% end %>
+                    </template>
                 </div>
             </div>
-        </div>
+        </transition>
+        <transition name="slide-right">
+            <div class="toggle_area product_area" v-if="!toggle">
+                <div class="navigate">
+                    <concierge-c height="90px" icon="/assets/レコ美_アイコン_おすすめ商品.png" type="center">
+                        <p>只今のお小遣いは<br><span class="deposit"><%= @money_left_over %>円</span>です！<br>おすすめの商品をご案内します。</p>
+                    </concierge-c>
+                </div>
+                <div class="border yellow"></div>
+                <div class="main">
+                    <div class="products">
+                        <% @recommend.each do |product|%>
+                            <div class="product">
+                                <div class="img_area">
+                                    <img src="<%= product["imageUrl"] %>" alt="" srcset="">
+                                </div>
+                                <p><%= product["itemPrice"] %>円</p>
+                                <a href="<%= product["itemUrl"] %>" target="_blank"></a>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+    <transition name="slide-right">
+        <user-setting-c v-if="setting" v-on:toggle="setting = !setting"></user-setting-c>
     </transition>
-  </div>
 </div>
 
 <!--
