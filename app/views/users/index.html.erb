@@ -41,23 +41,15 @@
             <div class="border yellow"></div>
             <div class="main">
                 <div class="products">
-                    <div class="product">
-                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
-                        <p>10000円</p>
-                        <a href="https://www.youtube.com/user/gmointernetgroup/videos" target="_blank"></a>
-                    </div>
-                    <div class="product">
-                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
-                        <p>10000円</p>
-                    </div>
-                    <div class="product">
-                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
-                        <p>10000円</p>
-                    </div>
-                    <div class="product">
-                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
-                        <p>10000円</p>
-                    </div>
+                    <% @recommend.each do |product|%>
+                        <div class="product">
+                            <div class="img_area">
+                                <img src="<%= product["imageUrl"] %>" alt="" srcset="">
+                            </div>
+                            <p><%= product["itemPrice"] %>円</p>
+                            <a href="<%= product["itemUrl"] %>" target="_blank"></a>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
