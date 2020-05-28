@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   post   '/newtest',     to: 'users#test'
   post   '/logtest',     to: 'users#logtest'
+  post   '/welcometest', to: 'users#welcometest' 
   get   '/welcome',     to: 'test#index'
   root to: 'users#index'
 end
