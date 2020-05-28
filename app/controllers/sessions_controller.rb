@@ -9,7 +9,7 @@ skip_before_action :verify_authenticity_token
     if user && user.authenticate(params[:session][:password])
       log_in user
       #render "users/index"
-      redirect_to users_path
+      redirect_to "/"
     else
       #flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
@@ -18,6 +18,6 @@ skip_before_action :verify_authenticity_token
 
   def destroy
     log_out
-    redirect_to users_path
+    redirect_to "/"
   end
 end

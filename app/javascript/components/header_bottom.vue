@@ -57,7 +57,7 @@ export default {
             height: 100%;
             position: absolute; 
             top: 0;
-            transition: 0.2s;
+            transition: 0.4s;
         }
         .actived_zero {
             left: 0;
