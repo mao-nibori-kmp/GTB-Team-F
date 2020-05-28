@@ -157,6 +157,10 @@ input[type="button"] {
                 font-size: 2.4rem;
                 color: #295e73;
             }
+            .deposit {
+                font-size: 2.4rem;
+                color: #c2a100;
+            }
         }
         .border {
             width: 100%;
@@ -228,6 +232,38 @@ input[type="button"] {
                 }
                 &:nth-child(2n) {
                     background-color: #eaf1f3;
+                }
+            }
+            .products {
+                margin: 25px 45px 0 45px;
+                width: calc(100% - 90px);
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-content: flex-start;
+                flex-wrap: wrap;
+                .product {
+                    margin: 0 20px 0px 20px;
+                    width: 100px;
+                    height: 135px;
+                    overflow: hidden;
+                    position: relative;
+                    img {
+                        height: 100px;
+                    }
+                    p {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 1.4rem;
+                    }
+                    a{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100px;
+                        height: 100px;
+                        background-color: rgba(0, 0, 0, 0.39);
+                    }
                 }
             }
         }

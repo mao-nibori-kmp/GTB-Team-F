@@ -34,13 +34,31 @@
     <transition name="slide-right">
         <div class="toggle_area product_area" v-if="!toggle">
             <div class="navigate">
-                <concierge-c>
-                    <p>おすすめ商品！!！</p>
+                <concierge-c height="90px" icon="/assets/レコ美_アイコン_おすすめ商品.png" type="center">
+                    <p>只今のお小遣いは<br><span class="deposit"><%= @money_left_over %>円</span>です！<br>おすすめの商品をご案内します。</p>
                 </concierge-c>
             </div>
             <div class="border yellow"></div>
             <div class="main">
-                
+                <div class="products">
+                    <div class="product">
+                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
+                        <p>10000円</p>
+                        <a href="https://www.youtube.com/user/gmointernetgroup/videos" target="_blank"></a>
+                    </div>
+                    <div class="product">
+                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
+                        <p>10000円</p>
+                    </div>
+                    <div class="product">
+                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
+                        <p>10000円</p>
+                    </div>
+                    <div class="product">
+                        <img src="/assets/レコ美_アイコン_おすすめ商品.png" alt="" srcset="">
+                        <p>10000円</p>
+                    </div>
+                </div>
             </div>
         </div>
     </transition>
