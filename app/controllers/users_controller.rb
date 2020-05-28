@@ -79,6 +79,10 @@ protect_from_forgery
         redirect_to "/login"
     end
 
+    def welcometest
+        redirect_to "/welcome"
+    end
+
     private
     def users_params
         params.require(:user).permit(:mail, :nickname, :sex, :age, :deposit, :password, :genre, :token)
