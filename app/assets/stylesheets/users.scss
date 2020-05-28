@@ -196,6 +196,7 @@ input[type="button"] {
                     width: calc(100% - 100px);
                     height: 100%;
                     display: flex;
+                    color: #000;
                     .text {
                         height: 60px;
                         line-height: 60px;
@@ -281,13 +282,13 @@ input[type="button"] {
 }
 
 .slide-left-enter-active, .slide-left-leave-active {
-    transition: transform .2s;
+    transition: transform .4s;
 }
 .slide-left-enter, .slide-left-leave-to /* .fade-leave-active below version 2.1.8 */ {
     transform: translateY(0px) translateX(-100%);
 }
 .slide-right-enter-active, .slide-right-leave-active {
-    transition: transform .2s;
+    transition: transform .4s;
 }
 .slide-right-enter, .slide-right-leave-to /* .fade-leave-active below version 2.1.8 */ {
     transform: translateY(0px) translateX(100%);
