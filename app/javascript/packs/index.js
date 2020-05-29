@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       toggle: true,
       user: {
+        mail: "",
+        pass: "",
+        name: "",
+        token: "ZDk2NzJiMDVjM2JiNjVjMGI1ZWZmZmVj",
+        deposit: "",
         age: "10",
         sex: "0",
         genres: [
@@ -76,11 +81,95 @@ document.addEventListener('DOMContentLoaded', () => {
           {id:100000, name:"百貨店・総合通販・ギフト", flag:false},
         ]
       },
+      count: 0,
+      depo_text: "",
+      mail_text: "",
       slide: "0",
-      setting: false
+      setting: false,
+      check: {
+        mail: true,
+        name: true,
+        genre: true,
+        token: true,
+        deposit: true
+      }
+    },
+    methods: {
+      validateSlide: function (type) {
+        let pattern = /^([1-9]\d*|0)$/;
+        let m_pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+        if(type === "mail"){
+          let text = ""
+          this.check.mail = true
+          if(this.user.mail.length == 0){
+            text += "メールアドレスを入力してください！<br>"
+            this.check.mail = false
+          }else if(!m_pattern.test(this.user.mail)){
+            text += "メールアドレスが無効です！！<br>"
+            this.check.mail = false
+          }
+          if(this.user.pass.length < 6){
+            text += "パスワードは６文字以上です！<br>"
+            this.check.mail = false
+          }
+          if(this.check.mail){
+            this.check.mail = true
+            this.slide = '-100vw'
+          }else {
+            this.mail_text = text
+          }
+        }
+        else if(type === "name"){
+          if(this.user.name.length > 0){
+            this.check.name = true
+            this.slide = '-200vw'
+          }else {
+            this.check.name = false
+          }
+        }
+        else if(type === "genre"){
+          if(this.count >= 3 ){
+            this.check.genre = true
+            this.slide = '-300vw'
+          }else {
+            document.getElementById("scroll").scrollTop = 0
+            this.check.genre = false
+          }
+        }
+        else if(type === "token"){
+          if(this.user.token.length > 0){
+            this.check.token = true
+            this.slide = '-400vw'
+          }else {
+            this.check.token = false
+          }
+        }
+        else if(type === "deposit"){
+          let depo_text = ""
+          if(this.user.deposit.length > 0){
+            if(pattern.test(this.user.deposit)){
+              this.check.deposit = true
+              this.slide = '-500vw'
+            }else {
+              this.depo_text = "半角数字で入力してください！"
+              this.check.deposit = false
+            }
+          }else {
+            this.depo_text = "貯金予定額を入力してください！"
+            this.check.deposit = false
+          }
+        }
+      }
     },
     computed: {
       genreText: function () {
+        let count = 0
+        for(let g of this.user.genres){
+          if(g.flag === true){
+            count++
+          }
+        }
+        this.count = count
         return JSON.stringify(this.user.genres)
       }
     }
